@@ -1,19 +1,18 @@
 @extends('layouts.dashboard')
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 m-auto">
-            <div class="card bg-secondary">
-                <div class="card-header">
-                    <h3 class="text text-center">Banner Image</h3>
-                </div>
-                <div class="card-body">
+       <!-- div Start -->
+       <div class="container-fluid  pt-4 px-4">
+        <div class="row  g-4">
+            <div class=" d-flex justify-content-center ">
+                <div class="bg-secondary col-lg-6   rounded h-100 p-4">
+                    <h3 class="text ">Banner Image</h3>
+
                     <form action="{{ route('bannerimage.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="" class="form-label">Current Image</label>
                             <br>
-                            <img style="height: 200px; width: 400px;" src="{{ asset('frontend_asset/assets/img/bg')}}/{{$banner->first()->image }}" alt="">
+                            <img style="height: 200px; width: 300px;" src="{{ asset('frontend_asset/assets/img/bg')}}/{{$banner->first()->image }}" alt="">
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Upload Image</label>
@@ -22,7 +21,7 @@
                                 <strong class="text text-danger">{{ $message }}</strong>
                             @enderror
                         </div>
-                        <div class="mb-3 text-center">
+                        <div class="mb-3 ">
                             <button type="submit" class="btn btn-dark ">Update</button>
                         </div>
                     </form>
@@ -30,5 +29,6 @@
             </div>
         </div>
     </div>
-</div>
+    <!-- div End -->
 @endsection
+

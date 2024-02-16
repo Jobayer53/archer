@@ -1,4 +1,4 @@
-@extends('layouts.dashboard');
+{{-- @extends('layouts.dashboard');
 
 @section('content')
 
@@ -266,4 +266,4 @@
 </div>
 <!-- Widgets End -->
 
-@endsection
+@endsection --}}

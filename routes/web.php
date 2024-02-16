@@ -2,11 +2,15 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FrontendController;
-
+use App\Http\Controllers\WorkController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,14 +31,16 @@ Auth::routes();
 
 //frontend
 Route::get('/', [FrontendController::class, 'index'])->name('index');
-Route::get('/work', [FrontendController::class, 'work'])->name('work');
-Route::get('/blog', [FrontendController::class,'blog'])->name('blog');
+
+
 
 
 Route::get('/home', [HomeController::class, 'home'])->name('home');
 //users
 Route::get('/users', [HomeController::class, 'users'])->name('users');
-Route::get('/users/delete/{user_id}', [HomeController::class, 'user_delete'])->name('user.delete');
+// Route::get('/users/delete/{user_id}', [HomeController::class, 'user_delete'])->name('user.delete');
+Route::delete('/users/destroy/{user_id}', [HomeController::class, 'user_destroy'])->middleware('auth')->name('user.destroy');
+
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 Route::post('/profile/update', [HomeController::class, 'profile_update'])->name('profile.update');
 Route::post('/profileimage/update', [HomeController::class, 'profileimage_update'])->name('profileimage.update');
@@ -57,8 +63,26 @@ Route::get('/download/cv', [FrontendController::class, 'download_cv'])->name('do
 
 
 //experience
+Route::get('/experience',[ExperienceController::class, 'index'])->name('experience');
 
+//education
+Route::get('/education',[EducationController::class, "index"])->name('education');
 
-// Route::post('/experience/add', [ExperienceController::class, 'add_experience'])->name('add.experience');
-// Route::get('/experience/data', [ExperienceController::class, 'getExperienceData'])->name('getExperienceData');
-Route::resource('expData', ExperienceController::class)->except(['create','update','show']);
+// Services
+Route::get('/service', [ServiceController::class, "index"])->name('service');
+
+//works
+Route::get('/work',[WorkController::class, 'index'])->name('work');
+Route::get('/work/details/{id}',[FrontendController::class, 'work_detail'])->name('work.detail');
+
+//client
+Route::get('/client',[ClientController::class, 'index'])->name('client');
+
+//blog
+Route::get('/blogs',[BlogController::class, 'index'])->name('blog');
+Route::get('/blog/create',[BlogController::class, 'blog_create'])->name('blog.create');
+Route::post('/blog/store',[BlogController::class, 'blog_store'])->name('blog.store');
+Route::get('/blog/edit/{id}',[BlogController::class, 'blog_edit'])->name('blog.edit');
+Route::post('/blog/update',[BlogController::class, 'blog_update'])->name('blog.update');
+
+Route::get('/blog/details', [FrontendController::class,'blog_detail'])->name('blog.detail');

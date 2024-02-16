@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('year');
             $table->string('description');
+            $table->integer('status')->default('0');
             $table->timestamps();
         });
     }

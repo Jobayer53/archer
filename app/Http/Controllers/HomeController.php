@@ -45,10 +45,17 @@ class HomeController extends Controller
         return view('backend.users.user', compact('users', 'total_users'));
     }
 //user delte
-    function user_delete($user_id){
-        User::find($user_id)->delete();
+    // function user_delete($user_id){
+    //     User::find($user_id)->delete();
+    //     return back();
+    // }
+
+    function user_destroy(Request $request){
+        User::find($request->user_id)->delete();
         return back();
     }
+
+
 // User Profile
     function profile(){
         return view('backend.users.profile');

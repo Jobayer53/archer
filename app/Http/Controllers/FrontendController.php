@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\Client;
+use App\Models\Education;
 use App\Models\About;
 use App\Models\Banner;
+use App\Models\Experience;
+use App\Models\Service;
+use App\Models\Work;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Barryvdh\DomPDF\PDF as DomPDFPDF;
 use Illuminate\Http\Request;
@@ -14,18 +20,55 @@ use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
     function index(){
+
         $about = About::all();
         $banner = Banner::all();
+        $clients = Client::all();
+        $experiences = Experience::where('status','=', 1)->get();
+        $educations = Education::where('status','=', 1)->get();
+
+        //services data
+        $services = null;
+        $servicesCount = Service::where('status','=', 1)->count();
+        if($servicesCount < 6 ){
+            $services = Service::where('status','=', 1)->orderBy('serial','asc')->take(3)->get();
+        }elseif($servicesCount >= 6 && $servicesCount < 9 ){
+            $services = Service::where('status','=', 1)->orderBy('serial','asc')->take(6)->get();
+        }elseif($servicesCount >= 9 && $servicesCount < 12){
+            $services = Service::where('status','=', 1)->orderBy('serial','asc')->take(9)->get();
+        }
+        // services data end here
+
+        // work start here
+        $works = null;
+        $workCount = Work::where('status','=',1)->count();
+        if($workCount < 6){
+            $works = Work::where('status', '=', 1)->orderBy('id', 'asc')->take(3)->get();
+        }elseif($workCount >= 6 && $workCount < 9 ){
+            $works = Work::where('status','=', 1)->orderBy('id','asc')->take(6)->get();
+        }elseif($workCount >= 9 && $workCount < 12){
+            $works = Work::where('status','=', 1)->orderBy('id','asc')->take(9)->get();
+        }
+        //work ends here
+
         return view('frontend.index',[
             'banner' => $banner,
             'about' => $about,
+            'experiences' => $experiences,
+            'educations' => $educations,
+            'services' => $services,
+            'works' => $works,
+            'clients' => $clients,
         ]);
     }
-    function work(){
-        return view('frontend.work_single');
-    }
-    function blog(){
+
+    function blog_detail(){
         return view('frontend.blog_single');
+    }
+    //work detail page
+    function work_detail($id){
+        $works = Work::where('id', $id)->get()->first();
+        return view('frontend.work_single', ['works'=>$works]);
     }
 
 

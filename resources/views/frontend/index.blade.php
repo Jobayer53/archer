@@ -270,109 +270,48 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+
+                <!-- Timeline-->
+                <div class="row ">
                     <div class="col-lg-6">
-                        <h5 class="">My Expericence</h5>
+                        <!--Timeline-->
+                        <h5 class="mb-30">My Expericence</h5>
+                        <div class="timeline  ">
+
+                            <!--item 1-->
+                           @foreach ($experiences as $experience )
+                           <div class="item">
+                            <div class="content">
+                                <h6 class="mb-0">{{ $experience->title }}
+                                    <span class="text-muted">  </span></h6>
+                                <small class="text-muted">{{ $experience->year }}</small>
+                                <p class="pt-15 mb-0">{{ $experience->description }}</p>
+                            </div>
+                        </div>
+                           @endforeach
+                            <!--item 1-->
+
+                        </div>
                     </div>
                     <div class="col-lg-6">
                         <h5 class="mb-30">My Education</h5>
-                    </div>
-                </div>
-                <!-- Timeline-->
-                <div class="row ">
-
-
-                    <div class="col-lg-6 scroll">
-                        <!--Timeline-->
-
-                        <div class="timeline">
+                        <div class="timeline ">
 
                             <!--item 1-->
+                            @foreach ($educations as $education )
                             <div class="item">
                                 <div class="content">
-                                    <h6 class="mb-0">senior web developer
-                                        <span class="text-muted"> - </span> Creative It</h6>
-                                    <small class="text-muted">2021 - present</small>
-                                    <p class="pt-15 mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit praesentium aut repellendus rem non repudiandae
-                                    sint dolor illo officia dignissimos.</p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="content">
-                                    <h6 class="mb-0">senior web developer
-                                        <span class="text-muted"> - </span> Creative It</h6>
-                                    <small class="text-muted">2021 - present</small>
-                                    <p class="pt-15 mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit praesentium aut repellendus rem non repudiandae
-                                    sint dolor illo officia dignissimos.</p>
-                                </div>
-                            </div>
-                            <!--item 2-->
-                            <div class="item">
-                                <div class="content">
-                                    <h6 class="mb-0">mid-level web developer
-                                        <span class="text-muted"> - </span> Creative It</h6>
-                                    <small class="text-muted">2020 - 2021</small>
-                                    <p class="pt-15 mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit praesentium aut repellendus rem non repudiandae
-                                    sint dolor illo officia dignissimos.</p>
-                                </div>
-                            </div>
-                            <!--item 3-->
-                            <div class="item">
-                                <div class="content">
-                                    <h6 class="mb-0">junoir web developer
-                                        <span class="text-muted"> - </span> Creative It</h6>
-                                    <small class="text-muted">2019 - 2020</small>
-                                    <p class="pt-15 mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit praesentium aut repellendus rem non repudiandae
-                                    sint dolor illo officia dignissimos.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 scroll">
+                                    <h6 class="mb-0">{{ $education->title }}
+                                        <span class="text-muted"> </span> </h6>
+                                    <small class="text-muted">{{ $education->year }}</small>
+                                    <p class="pt-15 mb-0">{{ $education->description }} </p>
 
-                        <div class="timeline">
+                                </div>
+                            </div>
+                            @endforeach
                             <!--item 1-->
-                            <div class="item">
-                                <div class="content">
-                                    <h6 class="mb-0">Enginering Degree
-                                        <span class="text-muted"> - </span> Paris University</h6>
-                                    <small class="text-muted">2015 - 2016</small>
-                                    <p class="pt-15 mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit praesentium aut repellendus rem non repudiandae
-                                        sint dolor illo officia dignissimos.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="content">
-                                    <h6 class="mb-0">Enginering Degree
-                                        <span class="text-muted"> - </span> Paris University</h6>
-                                    <small class="text-muted">2015 - 2016</small>
-                                    <p class="pt-15 mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit praesentium aut repellendus rem non repudiandae
-                                        sint dolor illo officia dignissimos.
-                                    </p>
-                                </div>
-                            </div>
-                            <!--item 2-->
-                            <div class="item">
-                                <div class="content">
-                                    <h6 class="mb-0">Master Degree
-                                        <span class="text-muted"> - </span> Paris University</h6>
-                                    <small class="text-muted ">2016 - 2018</small>
-                                    <p class="pt-15 mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit praesentium aut repellendus rem non repudiandae
-                                    sint dolor illo officia dignissimos.</p>
-                                </div>
-                            </div>
 
-                            <!--item 3-->
-                            <div class="item">
-                                <div class="content">
-                                    <h6 class="mb-0">Bachlor Degree
-                                        <span class="text-muted"> - </span> Paris University</h6>
-                                    <small class="text-muted">2015 - 2016 </small>
-                                    <p class=" pt-15 mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit praesentium aut repellendus rem non repudiandae
-                                    sint dolor illo officia dignissimos.</p>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -391,86 +330,26 @@
                     </div>
                 </div>
                 <div class="row">
+
+                    @foreach ($services as $data )
                     <!-- item -->
-                    <div class="col-sm-6 col-lg-4">
-                        <div class="item">
-                            <div class="circle">
-                               <h2>01</h2>
-                            </div>
-                            <div class="content ">
-                                <h5 class="mt-15 mb-10">Photography</h5>
-                                <p class="mb-0">
-                                     Lorem ipsum dolor sit amet consectetuer
-                                     adipiscing elit aenean commodo ligula eget.
-                                </p>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="item">
+                                <div class="circle">
+                                <h2>{{ $data->serial }}</h2>
+                                </div>
+                                <div class="content ">
+                                    <h5 class="mt-15 mb-10">{{ $data->title }}</h5>
+                                    <p class="mb-0">
+                                       {{ $data->description }}
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     <!-- item -->
-                    <div class="col-sm-6 col-lg-4">
-                        <div class="item">
-                            <div class="circle">
-                                <h2>02</h2>
-                            </div>
-                            <div class="content">
-                                <h5 class="mt-15 mb-10">Web Development</h5>
-                                <p class="mb-0">
-                                     Lorem ipsum dolor sit amet consectetuer
-                                      adipiscing elit aenean commodo ligula eget.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item -->
-                    <div class="col-sm-6 col-lg-4">
-                        <div class="item">
-                            <div class="circle">
-                                <h2>03</h2>
-                            </div>
-                            <div class="content">
-                                <h5 class=" mt-15 mb-10">Mobile Application</h5>
-                                <p class="mb-0"> Lorem ipsum dolor sit amet
-                                    consectetuer adipiscing elit aenean commodo ligula eget.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item -->
-                    <div class="col-sm-6 col-lg-4">
-                        <div class="item">
-                            <div class="circle">
-                                <h2>04</h2>
-                            </div>
-                            <div class="content">
-                                <h5 class="mt-15 mb-10">Graphic Design</h5>
-                                <p class="mb-0"> Lorem ipsum dolor sit amet consectetuer adipiscing elit aenean commodo ligula eget.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item -->
-                    <div class="col-sm-6 col-lg-4">
-                        <div class="item">
-                            <div class="circle">
-                                <h2>05</h2>
-                            </div>
-                            <div class="content">
-                                <h5 class="mt-15 mb-10">Video Editing</h5>
-                                <p class="mb-0"> Lorem ipsum dolor sit amet consectetuer adipiscing elit aenean commodo ligula eget.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item -->
-                    <div class="col-sm-6 col-lg-4">
-                        <div class="item">
-                            <div class="circle">
-                                <h2>06</h2>
-                            </div>
-                            <div class="content">
-                                <h5 class="mt-15 mb-10">Videography</h5>
-                                <p class="mb-0"> Lorem ipsum dolor sit
-                                     amet consectetuer adipiscing elit aenean commodo ligula eget.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+
+
                 </div>
             </div>
         </section>
@@ -488,117 +367,30 @@
                 </div>
                 <!--works-items -->
                 <div class="row works-items">
-                    <div class="col-lg-4 col-md-6">
-                        <!--item -->
-                        <div class="item">
-                            <div class="image">
-                                <img src="{{ asset('frontend_asset/assets/img/works/7.jpg') }}" alt="">
-                                <div class="overly">
-                                    <a href="{{ asset('frontend_asset/assets/img/works/7.jpg') }}" class="view-work"> View Work</a>
+                    @foreach ($works as  $data )
+                        <div class="col-lg-4 col-md-6">
+                            <!--item -->
+                            <div class="item">
+                                <div class="image">
+                                    <img src="{{ asset('uploads/work')}}/{{ $data->image }}" alt="">
+                                    <div class="overly">
+                                        <a href="{{ asset('uploads/work')}}/{{ $data->image }}" class="view-work"> View Work</a>
+                                    </div>
+                                </div>
+
+                                <div class="details d-flex align-items-center">
+                                    <p class="mb-0">{{ $data->title }}</p>
+                                    <a href="{{ route('work.detail', $data->id) }}" class="ml-auto"><i class="fas fa-external-link-alt"></i> </a>
                                 </div>
                             </div>
-
-                            <div class="details d-flex align-items-center">
-                                <p class="mb-0">Photography</p>
-                                <a href="{{ url('work') }}" class="ml-auto"><i class="fas fa-external-link-alt"></i> </a>
-                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <!--item -->
-                        <div class="item">
-                            <div class="image">
-                                <img src="{{ asset('frontend_asset/assets/img/works/8.jpg') }}" alt="">
-                                <div class="overly">
-                                    <a href="{{ asset('frontend_asset/assets/img/works/8.jpg') }}" class="view-work"> View Work</a>
-                                </div>
-                            </div>
+                    @endforeach
 
-                            <div class="details d-flex align-items-center">
-                                <p class="mb-0">PSD Template Design</p>
-                                <a href="{{ url('work') }}" class="ml-auto">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <!--item -->
-                        <div class="item">
-                            <div class="image">
-                                <img src="{{ asset('frontend_asset/assets/img/works/9.jpg') }}" alt="">
-                                <div class="overly">
-                                    <a href="{{ asset('frontend_asset/assets/img/works/9.jpg') }}" class="view-work"> View Work</a>
-                                </div>
-                            </div>
-
-                            <div class="details d-flex align-items-center">
-                                <p class="mb-0">Mobile Application</p>
-                                <a href="{{ url('work') }}" class="ml-auto">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <!--item -->
-                        <div class="item">
-                            <div class="image">
-                                <img src="{{ asset('frontend_asset/assets/img/works/10.jpg') }}" alt="">
-                                <div class="overly">
-                                    <a href="{{ asset('frontend_asset/assets/img/works/10.jpg') }}" class="view-work"> View Work</a>
-                                </div>
-                            </div>
-
-                            <div class="details d-flex align-items-center">
-                                <p class="mb-0">Graphic Design</p>
-                                <a href="{{ url('work') }}" class="ml-auto">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <!--item -->
-                        <div class="item">
-                            <div class="image">
-                                <img src="{{ asset('frontend_asset/assets/img/works/11.jpg') }}" alt="">
-                                <div class="overly">
-                                    <a href="{{ asset('frontend_asset/assets/img/works/11.jpg') }}" class="view-work"> View Work</a>
-                                </div>
-                            </div>
-
-                            <div class="details d-flex align-items-center">
-                                <p class="mb-0">Video Editing</p>
-                                <a href="{{ url('work') }}" class="ml-auto">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <!--item -->
-                        <div class="item">
-                            <div class="image">
-                                <img src="{{ asset('frontend_asset/assets/img/works/12.jpg') }}"alt="">
-                                <div class="overly">
-                                    <a href="{{ asset('frontend_asset/assets/img/works/12.jpg') }}" class="view-work"> View Work</a>
-                                </div>
-                            </div>
-
-                            <div class="details d-flex align-items-center">
-                                <p class="mb-0">Videography</p>
-                                <a href="{{ url('work') }}" class="ml-auto">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                     <!--more works-->
                     <div class="col-lg-12">
                         <div class="more-posts">
                             for more works Visit
-                            <a href="portfolio.html">our Portfolio.</a>
+                            <a href="#">our Portfolio.</a>
                         </div>
                     </div>
                 </div>
@@ -620,52 +412,30 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="owl-carousel">
+                            @foreach ($clients as $data )
+
+
                             <!--item 1-->
                             <div class="item d-flex align-items-center">
                                 <div class="image">
-                                    <img src="{{ asset('frontend_asset/assets/img/clients/1.jpg') }}" alt="">
+                                    @if ($data->image == null)
+                                        <img src="{{ Avatar::create($data->name)->toBase64() }}" alt="">
+                                    @else
+                                    <img src="{{ asset('uploads/client') }}/{{ $data->image }}" alt="">
+                                    @endif
+
                                 </div>
                                 <div class="content">
                                     <span class="icon_quotations_alt2 mb-0 icon"></span>
-                                    <p class="text-muted mb-30 mt-30">In a professional context it often happens that private or corporate clients corder a publication to be made.In a professional
-                                    context it often happens that private or corporate clients corder a publication to be made.</p>
+                                    <p class="text-muted mb-30 mt-30"> {{  $data->comment }}</p>
 
                                     <p class="author mb-0 ">
-                                        <span class="font-w-700">Amar Smith</span>
-                                          <span class="dot"></span> Product Manager</p>
+                                        <span class="font-w-700">{{ $data->name }}</span>
+                                          <span class="dot"></span>{{ $data->profession }}</p>
                                 </div>
                             </div>
-
-                            <!--item 2-->
-                            <div class="item d-flex align-items-center">
-                                <div class="image">
-                                    <img src="{{ asset('frontend_asset/assets/img/clients/2.jpg') }}" alt="">
-                                </div>
-                                <div class="content">
-                                    <span class="icon_quotations_alt2 mb-0 icon"></span>
-                                    <p class="text-muted mb-30 mt-30">In a professional context it often happens that private or corporate clients corder a publication to be made.In a
-                                            professional context it often happens that private or corporate clients corder a publication to be made.</p>
-                                    <p class="author  mb-0 ">
-                                        <span class="font-w-700">Amar Smith</span>
-                                        <span class="dot"></span> Product Manager</p>
-                                </div>
-                            </div>
-
-                            <!--item 3-->
-                            <div class="item d-flex align-items-center">
-                                <div class="image">
-                                    <img src="{{ asset('frontend_asset/assets/img/clients/3.jpg') }}" alt="">
-                                </div>
-                                <div class="content">
-                                    <span class="icon_quotations_alt2 mb-0 icon"></span>
-                                    <p class="text-muted mb-30 mt-30">In a professional context it often happens that private or corporate clients corder a publication to be made.In a
-                                            professional context it often happens that private or corporate clients corder a publication to be made.</p>
-                                    <p class="author  mb-0 ">
-                                        <span class="font-w-700">Amar Smith</span>
-                                        <span class="dot"></span> Product Manager
-                                    </p>
-                                </div>
-                            </div>
+                            <!--item 1-->
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -693,13 +463,13 @@
                             <div class="content">
                                 <small class="text-muted">09 March, 2020 <span class="dot"></span>  #Design , #web</small>
                                 <h5 class="title  mb-15 mt-10">
-                                    <a href="{{ route('blog') }}" >what's the different between Graphic and web design</a>
+                                    <a href="{{ route('blog.detail') }}" >what's the different between Graphic and web design</a>
                                 </h5>
                                 <p class=" mb-25">
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, soluta rerum molestias optio distinctio blanditiis
                                         cupiditate...
                                 </p>
-                                <a href="{{ route('blog') }}" class="btn-custom">
+                                <a href="{{ route('blog.detail') }}" class="btn-custom">
                                     <span>Read More</span>
                                     <span class="arrow_right"></span>
                                 </a>

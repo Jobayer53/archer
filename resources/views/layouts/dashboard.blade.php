@@ -27,15 +27,31 @@
     <link href="{{ asset('backend_asset/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('backend_asset/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
 
-    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+    {{-- <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet"> --}}
 
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('backend_asset/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.3/dist/sweetalert2.min.css" integrity="sha256-h2Gkn+H33lnKlQTNntQyLXMWq7/9XI2rlPCsLsVcUBs=" crossorigin="anonymous">
+    {{-- summer note links --}}
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+
+
+
+
+
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('backend_asset/css/style.css') }}" rel="stylesheet">
+
+
+
+    @livewireStyles
 </head>
 
 <body>
@@ -87,11 +103,16 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="{{ route('about.image') }}" class="dropdown-item">About Image</a>
                             <a href="{{ route('about.content') }}" class="dropdown-item">About Content</a>
-                            <a href="{{ route('expData.index') }}" class="dropdown-item">Experience</a>
+                            <a href="{{ route('experience') }}" class="dropdown-item">Experience</a>
+                            <a href="{{ route('education') }}" class="dropdown-item">Education</a>
 
                         </div>
                     </div>
 
+                    <a href="{{ route('service') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Services</a>
+                    <a href="{{ route('work') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Works</a>
+                    <a href="{{ route('client')}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Clients</a>
+                    <a href="{{ route('blog') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Blogs</a>
                     <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
@@ -218,18 +239,27 @@
 
 
             <!-- Sale & Revenue Start -->
-            <main class="py-4">
+
                 @yield('content')
-            </main>
+
 
 
 
             <!-- Footer Start -->
-            <footer class="footer">
-                <div class=" text-sm-start">
-                    &copy; <a class="" href="#">Your Site Name</a>, All Right Reserved.
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            &copy; <a href="#">Your Site Name</a>, All Right Reserved.
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                            <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                        </div>
+                    </div>
                 </div>
-            </footer>
+            </div>
             <!-- Footer End -->
         </div>
         <!-- Content End -->
@@ -240,8 +270,10 @@
     </div>
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="{{ asset('backend_asset/lib/chart/chart.min.js') }}"></script>
     <script src="{{ asset('backend_asset/lib/easing/easing.min.js') }}"></script>
@@ -250,12 +282,19 @@
     <script src="{{ asset('backend_asset/lib/tempusdominus/js/moment.min.js') }}"></script>
     <script src="{{ asset('backend_asset/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
     <script src="{{ asset('backend_asset/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-
-
     <!-- Template Javascript -->
     <script src="{{ asset('backend_asset/js/main.js') }}"></script>
+    <!-- sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.3/dist/sweetalert2.all.min.js" integrity="sha256-xkymBp70qMSHnInLEXDWb34pyON8sBGMA1S84vQILx4=" crossorigin="anonymous"></script>
+    <!-- include summernote css/js -->
 
-    @yield("footer")
+
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+    @yield("script")
+
+    @livewireScripts
+
 </body>
 
 </html>

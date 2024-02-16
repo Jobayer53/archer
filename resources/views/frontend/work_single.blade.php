@@ -94,7 +94,7 @@
                 <div class="row mb-50">
                     <div class="col-md-12">
                         <div class="section-title">
-                            <h2 class="mb-0">Photography</h2>
+                            <h2 class="mb-0">{{ $works->title }}</h2>
                             <p class="text-muted mb-0">Description & images of project .</p>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="image">
-                            <img src="{{ asset('frontend_asset/assets/img/works/7.jpg') }}" alt="">
+                            <img src="{{ asset('uploads/work') }}/{{ $works->image }}" alt="">
 
                         </div>
                     </div>
@@ -113,33 +113,27 @@
                                 <ul class="liste">
                                     <li>
                                         <span>Client:</span>
-                                        <a href="#">Epamto.com</a>
+                                        <a href="#">{{ $works->client }}</a>
                                     </li>
                                     <li>
-                                        <span>Date:</span> 08-03-2021</li>
+                                        <span>Date:</span>{{ $works->date }}</li>
                                     <li>
                                         <span>URL:</span>
-                                        <a href="#"> www.website.com</a>
+                                        <a href="#"> {{ $works->url }}</a>
                                     </li>
                                 </ul>
                                 <ul class="liste">
                                     <li>
-                                        <span>Categorie:</span> Graphic Design.</li>
+                                        <span>Categorie:</span>{{ $works->categorie }} </li>
                                     <li>
-                                        <span>Technologies:</span> Photoshop,figma</li>
+                                        <span>Technologies:</span>{{ $works->technologie }} </li>
                                     <li>
-                                        <span>tags:</span>Design,mockup</li>
+                                        <span>tags:</span>{{ $works->tags }}</li>
                                 </ul>
                             </div>
                             <div class="description">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                    Excepteur sint occaecat cupidatat non proident. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                                    in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-                                </p>
+                                <p> {{ $works->description }} </p>
+
                             </div>
                         </div>
                     </div>
@@ -155,7 +149,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <p class="text-dark text-center mb-0">© 2022 Shahriar S. Nirjon , Are Right All Resereved.</p>
+                        <p class="text-dark text-center mb-0">© 2022 Are Right All Resereved.</p>
                     </div>
                 </div>
             </div>
