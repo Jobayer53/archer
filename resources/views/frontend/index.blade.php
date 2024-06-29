@@ -43,7 +43,13 @@
         transition: transform 1s ease-in-out, opacity 1s ease-in-out;
 
     }
-    .animation3.visible {
+    .animation5 {
+        opacity: 0;
+        transform: translateY(50%);
+        transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+
+    }
+    .animation3.visible, .animation5.visible {
     opacity: 1;
     transform: translateY(0);
     }
@@ -52,7 +58,7 @@
         opacity: 0;
         transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
     }
-    .animation.visible, .animation2.visible , .animation3.visible , .animation4.visible {
+    .animation.visible, .animation2.visible , .animation3.visible , .animation4.visible, .animation5.visible {
         opacity: 1;
     }
 
@@ -503,7 +509,7 @@
 
                     <!--more works-->
                     <div class="col-lg-12">
-                        <div class="more-posts">
+                        <div class="more-posts animation5">
                             for more works Visit
                             <a href="#">our Portfolio.</a>
                         </div>
@@ -781,20 +787,20 @@
     <script src="{{ asset('frontend_asset/assets/js/main.js') }}"></script>
     <script>
     document.addEventListener('scroll', function() {
-    const container = document.querySelector('.animation');
-    const containerPosition = container.getBoundingClientRect().top;
-    const screenPosition = window.innerHeight / 2;
+        const container = document.querySelector('.animation');
+        const containerPosition = container.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.5;
 
-    if (containerPosition < screenPosition) {
-        container.classList.add('visible');
-    } else {
-        container.classList.remove('visible');
-    }
-});
+        if (containerPosition < screenPosition) {
+            container.classList.add('visible');
+        } else {
+            container.classList.remove('visible');
+        }
+    });
     document.addEventListener('scroll', function() {
         const container = document.querySelector('.animation2');
         const containerPosition = container.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 2;
+        const screenPosition = window.innerHeight / 1.5;
 
         if (containerPosition < screenPosition) {
             container.classList.add('visible');
@@ -825,6 +831,17 @@
             container.classList.add('visible');
         }
         else {
+            container.classList.remove('visible');
+        }
+    });
+    document.addEventListener('scroll', function() {
+        const container = document.querySelector('.animation5');
+        const containerPosition = container.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.5;
+
+        if (containerPosition < screenPosition) {
+            container.classList.add('visible');
+        } else {
             container.classList.remove('visible');
         }
     });
