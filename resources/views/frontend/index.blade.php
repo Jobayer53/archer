@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Title -->
-    <title>Personal Portfolio</title>
+    <title>Jobayer Shikder</title>
 
     <!-- CSS Plugins -->
     <link rel="stylesheet" href="{{ asset('frontend_asset/assets/css/all.css') }}">
@@ -18,17 +18,132 @@
     <link rel="stylesheet" href="{{ asset('frontend_asset/assets/css/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend_asset/assets/css/owl.carousel.css') }}">
 
-
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('uploads/favicon-16x16.png') }}">
     <!-- Font Google -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
 
     <!-- main CSS -->
     <link rel="stylesheet" href="{{ asset('frontend_asset/assets/css/main.css') }}">
+<style>
+    .left  {
+        transform: translateX(-15%);
+        transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    }
 
+    .right {
+        transform: translateX(15%);
+        transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+
+    }
+
+    .animation3 {
+        opacity: 0;
+        transform: translateY(50%);
+        transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+
+    }
+    .animation3.visible {
+    opacity: 1;
+    transform: translateY(0);
+    }
+
+    .animation , .animation2, .animation4 {
+        opacity: 0;
+        transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
+    }
+    .animation.visible, .animation2.visible , .animation3.visible , .animation4.visible {
+        opacity: 1;
+    }
+
+    .animation.visible .left, .animation2.visible .left , .animation4.visible .left {
+        transform: translateX(0);
+    }
+
+    .animation.visible .right, .animation2.visible .right ,.animation4.visible .right {
+        transform: translateX(0);
+    }
+
+</style>
+<style>
+    @keyframes lightFade {
+        0% {
+            color: #000000;
+        }
+        50% {
+            color: #ffffff;
+        }
+        100% {
+            color: #000000;
+        }
+    }
+
+    .loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: #000000;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .loader-text {
+        font-size: 2em;
+        font-family: Arial, sans-serif;
+        font-weight: 100;
+        color: #000000;
+        letter-spacing:0.5em;
+        position: relative;
+
+    }
+
+    .loader-text span {
+        animation: lightFade 1s linear infinite;
+        display: inline-block;
+    }
+
+    .loader-text span:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    .loader-text span:nth-child(2) {
+        animation-delay: 0.1s;
+    }
+
+    .loader-text span:nth-child(3) {
+        animation-delay: 0.2s;
+    }
+
+    .loader-text span:nth-child(4) {
+        animation-delay: 0.3s;
+    }
+
+    .loader-text span:nth-child(5) {
+        animation-delay: 0.4s;
+    }
+
+    .loader-text span:nth-child(6) {
+        animation-delay: 0.5s;
+    }
+
+    .loader-text span:nth-child(7) {
+        animation-delay: 0.6s;
+    }
+
+
+</style>
 </head>
 
 <body class="dark" data-spy="scroll" data-target="#scrollspy" data-offset="1">
+    <div class="loading">
+        <div class="loader-text">
+            <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span>
+        </div>
+    </div>
 
     <!--menu toggle-->
     <div class="menu-toggle" id="menuToggle">
@@ -39,7 +154,7 @@
     <div class="header-left" id="scrollspy">
         <!--logo-->
         <div class="logo bg-base-color">
-            <a href="index.html" class="mb-0">N</a>
+            <a href="{{ route('index') }}" class="mb-0">J</a>
         </div>
 
         <!--menu-->
@@ -142,10 +257,10 @@
                                     <p class="max-width-450  mt-20 mb-30">
                                         {{ $banner->first()->short_title }}
                                     </p>
-                                    <a href="#about" class="btn-custom">
+                                    {{-- <a href="#about" class="btn-custom">
                                         <span><i class="fas fa-user"></i></span>
                                         <span> More About Me</span>
-                                    </a>
+                                    </a> --}}
                                 </div>
                             </div>
                         </div>
@@ -161,10 +276,10 @@
                                 <p class="mb-0"> {{ $banner->first()->phone }}</p>
                             </div>
 
-                            <div class="item">
+                            {{-- <div class="item">
                                 <p class="font-w-700  mb-0">Location</p>
                                 <p class="mb-0"> {{ $banner->first()->location }}</p>
-                            </div>
+                            </div> --}}
                         </div>
                      </div>
                 </div>
@@ -178,38 +293,38 @@
                     <div class="col-md-12">
                         <div class="section-title">
                         <h2 class="mb-0">About me</h2>
-                        <p class="text-muted mb-0">Main informations about me and what I love to do.</p>
+                        <p class="text-muted mb-0"> Informations about me.</p>
                         </div>
                     </div>
                 </div>
                 <!--Hero & info-->
-                <div class="row mb-50">
-                    <div class="col-lg-5">
+                <div class="row mb-50 animation ">
+                    <div class="col-lg-5 box left">
                         <div class="hero">
                             <img src="{{ asset('uploads/about')}}/{{ $about->first()->image }}" alt="">
                         </div>
                     </div>
 
-                     <div class="col-lg-7 d-flex align-items-center">
-                        <div class="details">
+                     <div class="col-lg-7 d-flex align-items-center box ">
+                        <div class="details right">
                             <h5>{{ $about->first()->title }}</h5>
-                            <p class="mb-25">
+                            <p class="mb-25 right">
                                 {{ $about->first()->short_title }}
                             </p>
 
                             <!--about info-->
                             <ul class="info mb-5 list-inline">
-                                <li><span>Name :</span> {{ $about->first()->name }}</li>
-                                <li><span>Phone :</span>  {{ $about->first()->phone }}</li>
-                                <li><span>Date of birth :</span> {{ $about->first()->birth_date }}</li>
-                                <li><span>Email :</span><a href="mailto:justnirjonhasan4u@gmail.com"> {{ $about->first()->email }}</a></li>
-                                <li><span>Nationality :</span>  {{ $about->first()->nationality }}</li>
-                                <li><span>Address :</span>  {{ $about->first()->address }}</li>
-                                <li><span>Work Status :</span>  {{ $about->first()->work_status }}</li>
-                                <li><span>Freelancer :</span>  {{ $about->first()->freelancer }}</li>
+                                <li class="right"><span>Name :</span> {{ $about->first()->name }}</li>
+                                <li class="right"><span>Phone :</span>  {{ $about->first()->phone }}</li>
+                                <li class="right"><span>Date of birth :</span> {{ $about->first()->birth_date }}</li>
+                                <li class="right"><span>Email :</span><a href="mailto:{{ $about->first()->email  }}"> {{ $about->first()->email }}</a></li>
+                                <li class="right"><span>Nationality :</span>  {{ $about->first()->nationality }}</li>
+                                <li class="right"><span>Address :</span>  {{ $about->first()->address }}</li>
+                                <li class="right"><span>Work Status :</span>  {{ $about->first()->work_status }}</li>
+                                <li class="right"><span>Freelancer :</span>  {{ $about->first()->freelancer }}</li>
                             </ul>
 
-                            <a href="{{ route('download.cv') }}" class="btn-custom">
+                            <a href="{{ route('download.cv') }}" class="btn-custom right">
                                 <span><i class="fas fa-cloud-download-alt"></i></span>
                                 <span>Downland My CV</span>
                             </a>
@@ -218,7 +333,7 @@
                 </div>
 
                 <!--Features-->
-                <div class="row features mb-20">
+                {{-- <div class="row features mb-20">
                     <div class="col-lg-2 col-md-4 col-sm-6">
                         <div class="item">
                             <div class="icon mb-10"><i class="fas fa-user"></i></div>
@@ -269,11 +384,11 @@
                             <p class="mb-0">2000 lines of code</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Timeline-->
-                <div class="row ">
-                    <div class="col-lg-6">
+                <div class="row animation2 " style="margin-top:120px">
+                    <div class="col-lg-6 box left">
                         <!--Timeline-->
                         <h5 class="mb-30">My Expericence</h5>
                         <div class="timeline  ">
@@ -293,7 +408,7 @@
 
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6  box right">
                         <h5 class="mb-30">My Education</h5>
                         <div class="timeline ">
 
@@ -333,8 +448,8 @@
 
                     @foreach ($services as $data )
                     <!-- item -->
-                        <div class="col-sm-6 col-lg-4">
-                            <div class="item">
+                    <div class="col-sm-6 col-lg-4 animation3">
+                            <div class="item ">
                                 <div class="circle">
                                 <h2>{{ $data->serial }}</h2>
                                 </div>
@@ -346,9 +461,9 @@
                                 </div>
                             </div>
                         </div>
+
                     <!-- item -->
                     @endforeach
-
 
                 </div>
             </div>
@@ -368,7 +483,7 @@
                 <!--works-items -->
                 <div class="row works-items">
                     @foreach ($works as  $data )
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-4 col-md-6 animation3">
                             <!--item -->
                             <div class="item">
                                 <div class="image">
@@ -416,7 +531,7 @@
 
 
                             <!--item 1-->
-                            <div class="item d-flex align-items-center">
+                            <div class="item d-flex align-items-center ">
                                 <div class="image">
                                     @if ($data->image == null)
                                         <img src="{{ Avatar::create($data->name)->toBase64() }}" alt="">
@@ -566,8 +681,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-6">
+                <div class="row animation4">
+                    <div class="col-lg-6 left">
                         <form action="https://mariama.netlify.app/html/assets/php/mail.php" method="post" id="main_contact_form" class="form contact_form ">
                             <div class="alert alert-success contact_msg " style="display: none" role="alert">
                                 Your message was sent successfully.
@@ -596,7 +711,7 @@
                         </form>
                     </div>
                     <!--Contact -info -->
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 right">
                         <h5 >Let's talk about everything!</h5>
                         <p class=" mb-30">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore. Lorem
                             ipsum dolor sit amet, consectetuer adipiscing elit.
@@ -608,7 +723,7 @@
                             </div>
                             <div class="item mb-20">
                                 <p class="font-w-700 mb-0">Email: </p>
-                                <p class="mb-0"><i class="fas fa-envelope base-color"> </i> justnirjonhasan4u@gmail.com</p>
+                                <p class="mb-0"><i class="fas fa-envelope base-color"> </i> </p>
                             </div>
                             <div class="item mb-20">
                                 <p class=" font-w-700 mb-0">Address: </p>
@@ -616,7 +731,7 @@
                             </div>
                             <div class="item">
                                 <p class="font-w-700 mb-0">Skype: </p>
-                                <p class="mb-0"> <i class="fab fab fa-skype base-color"> </i>nirjon.hasan</p>
+                                <p class="mb-0"> <i class="fab fab fa-skype base-color"> </i></p>
                             </div>
                         </div>
                     </div>
@@ -629,7 +744,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <p class="text-center mb-0">© 2022 Shahriar S. Nirjon , Are Right All Resereved.</p>
+                        <p class="text-center mb-0">© 2022   All Right Are Resereved.</p>
                     </div>
                 </div>
             </div>
@@ -649,9 +764,9 @@
     <!--Main End-->
 
     <!--loading -->
-    <div class="loading">
+    {{-- <div class="loading">
         <div class="circle"></div>
-    </div>
+    </div> --}}
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{{ asset('frontend_asset/assets/js/jquery.min.js') }}"></script>
@@ -664,6 +779,69 @@
     <script src="{{ asset('frontend_asset/assets/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('frontend_asset/assets/js/ajax-contact.js') }}"></script>
     <script src="{{ asset('frontend_asset/assets/js/main.js') }}"></script>
+    <script>
+    document.addEventListener('scroll', function() {
+    const container = document.querySelector('.animation');
+    const containerPosition = container.getBoundingClientRect().top;
+    const screenPosition = window.innerHeight / 2;
 
+    if (containerPosition < screenPosition) {
+        container.classList.add('visible');
+    } else {
+        container.classList.remove('visible');
+    }
+});
+    document.addEventListener('scroll', function() {
+        const container = document.querySelector('.animation2');
+        const containerPosition = container.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 2;
+
+        if (containerPosition < screenPosition) {
+            container.classList.add('visible');
+        }else {
+            container.classList.remove('visible');
+        }
+    });
+    document.addEventListener('scroll', function() {
+    const items = document.querySelectorAll('.animation3');
+    const screenPosition = window.innerHeight / 1.5;
+
+    items.forEach(item => {
+        const itemPosition = item.getBoundingClientRect().top;
+
+        if (itemPosition < screenPosition) {
+            item.classList.add('visible');
+        } else {
+            item.classList.remove('visible');
+        }
+    });
+});
+    document.addEventListener('scroll', function() {
+        const container = document.querySelector('.animation4');
+        const containerPosition = container.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 2;
+
+        if (containerPosition < screenPosition) {
+            container.classList.add('visible');
+        }
+        else {
+            container.classList.remove('visible');
+        }
+    });
+
+    </script>
+     {{-- <script>
+   window.addEventListener('load', () => {
+    setTimeout(() => {
+        document.querySelector('.loading').style.animation = 'fadeOut 1s forwards';
+    }, 1000);
+
+    setTimeout(() => {
+        document.querySelector('.loading').remove();
+    }, 2000);
+});
+
+
+    </script> --}}
 </body>
 </html>

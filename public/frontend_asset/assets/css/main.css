@@ -1600,7 +1600,7 @@ ul {
 /* -----------------------------
 		 Preloader
 --------------------------------- */
-.loading {
+/* .loading {
   position: fixed;
   top: 0;
   left: 0;
@@ -1657,7 +1657,7 @@ ul {
     -webkit-transform: scale(0);
             transform: scale(0);
   }
-}
+} */
 
 @media screen and (max-width: 991px) {
   .about .hero,
@@ -1821,7 +1821,8 @@ ul {
 		 Dark
 ------------------------------ */
 .dark {
-  background-color: #008080;
+  /* background-color: #008080; */
+  background: linear-gradient(9deg, rgba(41,195,195,1) 0%, rgba(39,92,92,1) 51%, rgba(7,200,200,1) 100%);
   color: rgba(255, 255, 255, 0.8);
 }
 
