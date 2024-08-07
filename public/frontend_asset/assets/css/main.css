@@ -166,7 +166,7 @@ ul {
 
 .main {
   height: 100%;
-  margin-left: 100px;
+  /* margin-left: 100px; */
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
@@ -1824,6 +1824,9 @@ ul {
   .work-single .details .g-listes .liste:last-child {
     margin-left: 0;
   }
+  .form-control-custom{
+    padding: 0!important;
+  }
 }
 
 @media screen and (max-width: 320px) {
@@ -1838,6 +1841,9 @@ ul {
   }
   .testimonials .item .content .author:after {
     display: none;
+  }
+  .form-control-custom{
+    padding: 0!important;
   }
 }
 
@@ -1934,6 +1940,9 @@ ul {
   .dark .header-left .main-menu {
     background-color: #0b0c10;
   }
+  #main_contact_form{
+    padding: 0!important;
+  }
 }
 /*custom edit */
 .timeline{
@@ -1952,3 +1961,39 @@ ul {
 
 
 /*custom edit */
+.contact{
+    background-image: url(../img/contact.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-top: 40px;
+
+}
+#main_contact_form{
+    background-color: transparent !important;
+    margin-top: -20vh;
+}
+.contact-title:after {
+    position: absolute;
+    content: "";
+    left: 0px;
+    top: 13px;
+    width: 3px;
+    height: 58px;
+    background-color: #008080;
+    z-index: -1;
+}
+.contact-left{
+    margin-bottom: 10rem;
+}
+.form-control-custom{
+    background-color: #333 !important;
+    border: none !important;
+    border-radius: 0!important;
+    color: #fff !important;
+
+    padding: 1.5rem 1rem !important;
+    box-shadow: 0 0 25px rgba(0, 0, 0, .5);
+    -webkit-appearance: none;
+}
+

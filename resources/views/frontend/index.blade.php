@@ -152,12 +152,12 @@
     </div>
 
     <!--menu toggle-->
-    <div class="menu-toggle" id="menuToggle">
+    {{-- <div class="menu-toggle" id="menuToggle">
         <span></span>
-    </div>
+    </div> --}}
 
     <!--header-left-->
-    <div class="header-left" id="scrollspy">
+    {{-- <div class="header-left" id="scrollspy">
         <!--logo-->
         <div class="logo bg-base-color">
             <a href="{{ route('index') }}" class="mb-0">J</a>
@@ -202,7 +202,7 @@
             <span class="social_share text-dark"></span>
         </div>
 
-    </div>
+    </div> --}}
 
 
 
@@ -677,51 +677,22 @@
         </section>
 
         <!-- Contact -->
-        <section class="section contact pb-70" id="contact">
+        <section class="section contact " id="contact">
             <div class="container-fluid">
                 <div class="row mb-50">
-                    <div class="col-md-12">
-                        <div class="section-title">
+                    <div class="col-md-6 mt-30">
+                        <div class="section-title contact-title">
                             <h2 class="mb-0">Contact Me</h2>
                             <p class="text-muted mb-0">Feel Free To Contact Me Any Time </p>
                         </div>
                     </div>
                 </div>
                 <div class="row animation4">
-                    <div class="col-lg-6 left">
-                        <form action="https://mariama.netlify.app/html/assets/php/mail.php" method="post" id="main_contact_form" class="form contact_form ">
-                            <div class="alert alert-success contact_msg " style="display: none" role="alert">
-                                Your message was sent successfully.
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Name" required="required">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Email" required="required">
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" name="subject" id="subject" class="form-control" placeholder="Subject" required="required">
-                            </div>
-
-                            <div class="form-group">
-                                <textarea name="message" id="message" cols="30" rows="5" class="form-control" placeholder="Message" required="required"></textarea>
-                            </div>
-
-                            <button  type="submit" name="submit" class="btn-custom">
-                                <span><i class="fas fa-paper-plane"></i></span>
-                                <span> Send Message</span>
-                            </button>
-
-                        </form>
-                    </div>
-                    <!--Contact -info -->
-                    <div class="col-lg-6 right">
-                        <h5 >Let's talk about everything!</h5>
+                    <div class="col-lg-6 left contact-left">
+                        {{-- <h5 >Let's talk about everything!</h5>
                         <p class=" mb-30">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore. Lorem
                             ipsum dolor sit amet, consectetuer adipiscing elit.
-                             Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
+                             Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> --}}
                         <div class="contact-info">
                             <div class="item mb-20">
                                 <p class="font-w-700 mb-0">Phone: </P>
@@ -740,6 +711,36 @@
                                 <p class="mb-0"> <i class="fab fab fa-skype base-color"> </i></p>
                             </div>
                         </div>
+                    </div>
+                    <!--Contact -info -->
+                    <div class="col-lg-6 right">
+                        <form action="https://mariama.netlify.app/html/assets/php/mail.php" method="post" id="main_contact_form" class="form contact_form ">
+                            <div class="alert alert-success contact_msg " style="display: none" role="alert">
+                                Your message was sent successfully.
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="name" id="name" class="form-control form-control-custom" placeholder="Name" required="required">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="email" name="email" id="email" class="form-control form-control-custom" placeholder="Email" required="required">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="subject" id="subject" class="form-control form-control-custom" placeholder="Subject" required="required">
+                            </div>
+
+                            <div class="form-group">
+                                <textarea name="message" id="message" cols="30" rows="5" class="form-control form-control-custom" placeholder="Message" required="required"></textarea>
+                            </div>
+
+                            <button  type="submit" name="submit" class="btn-custom">
+                                <span><i class="fas fa-paper-plane"></i></span>
+                                <span> Send Message</span>
+                            </button>
+
+                        </form>
+
                     </div>
                 </div>
             </div>
