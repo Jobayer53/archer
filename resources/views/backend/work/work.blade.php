@@ -22,6 +22,14 @@
 
          });
 
-</script>
 
+
+</script>
+<script>
+    $(document).ready(function() {
+        $('#images').on('click', function() {
+            $('#work_id').val($(this).data('id'));
+        });
+    });
+</script>
 @endsection

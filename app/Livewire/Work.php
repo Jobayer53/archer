@@ -4,8 +4,10 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Str;
-use App\Models\Work as ModelsWork;
+use App\Models\ProjectImage;
 use Livewire\WithFileUploads;
+use App\Models\Work as ModelsWork;
+use Illuminate\Support\Facades\Log;
 
 class Work extends Component
 {
@@ -13,12 +15,11 @@ class Work extends Component
 
     use WithFileUploads;
 
-    public $title, $client, $date, $url, $categorie, $technologie, $tag, $description,$image, $editTitle, $editClient, $editDate, $editUrl, $editCategorie, $editTechnologie, $editTag, $editDescription, $editImage, $work_id, $oldImage,$readMoreDesp;
+    public $title, $client, $date, $url, $categorie, $technologie, $tag, $description,$image, $editTitle, $editClient, $editDate, $editUrl, $editCategorie, $editTechnologie, $editTag, $editDescription, $editImage, $work_id, $oldImage,$readMoreDesp ;
+    public $images=[];
 
-    public function render()
-    {   $works = ModelsWork::all();
-        return view('livewire.work.work', ["works" => $works]);
-    }
+    public $workId;
+
 
 //insert
 public function store(){
@@ -177,6 +178,33 @@ public function readMore($id){
     $this->readMoreDesp = $work->description;
 }
 
+public function storeImage()
+{
 
+
+    if (empty($this->images)) {
+        session()->flash('message', 'No images selected.');
+        return;
+    }
+
+    foreach ($this->images as $image) {
+        $extension = $image->getClientOriginalExtension();
+        $file_name = "PROJECT-IMAGE-".(Str::random(6)).rand('0','999999').'.'.$extension;
+        $image->storeAs('uploads/project-image/', $file_name, 'public');
+
+        $project_image = new ProjectImage();
+        $project_image->image = $file_name;
+        $project_image->project_id = $this->workId;
+        $project_image->save();
+
+        $this->reset();
+        $this->dispatch('close-modal');
+    }
+}
+
+public function render()
+{   $works = ModelsWork::all();
+    return view('livewire.work.work', ["works" => $works]);
+}
 
 }

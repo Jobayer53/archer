@@ -192,21 +192,56 @@
     <div class="modal-dialog">
       <div class="modal-content bg-secondary">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="readMoreModal">Update Description </h1>
+          <h1 class="modal-title fs-5" id="readMoreModal">Read Description </h1>
           <button type="button" wire:click="closeModal" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
 
 
 
+
                 <div class="mb-3">
                     <label for="" class="form-label">Description</label>
-                    <textarea class="form-control"  cols="50" rows="12" wire:model="readMoreDesp"></textarea>
+                    <textarea class="form-control bg-dark"  cols="50" rows="5" wire:model="readMoreDesp" readonly></textarea>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" wire:click="closeModal"  data-bs-dismiss="modal" class="btn btn-info">Close</button>
                 </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+   <!--add image Modal -->
+   <div wire:ignore.self class="modal fade" id="addImage" tabindex="-1" aria-labelledby="readMoreModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-secondary">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="readMoreModal">Add Images </h1>
+          <button type="button" wire:click="closeModal" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+
+            <form  wire:submit.prevent="storeImage">
+                <div class="mb-3">
+                    <label for="" class="form-label">Image</label>
+                    <input type="file" class="form-control"   wire:model="images" multiple accept="image/*">
+                    <input type="hidden" id="#work_id" wire:model="workId">
+
+                    @if (session()->has('message'))
+                        <span class="text-danger">{{ session('message') }}</span>
+                    @endif
+                </div>
+                <div class="modal-footer">
+                    <button type="submit"   class="btn btn-info">Add</button>
+                    <button type="button" wire:click="closeModal"  data-bs-dismiss="modal" class="btn btn-info">Close</button>
+                </div>
+
+            </form>
 
         </div>
 

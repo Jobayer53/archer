@@ -22,12 +22,7 @@
                             <th>SL</th>
                             <th>IMAGE</th>
                             <th>TITLE</th>
-                            <th>CLIENT</th>
-                            <th>DATE</th>
-                            <th>URL</th>
-                            <th>CATEGORIES</th>
-                            <th>TECHNOLOGIES</th>
-                            <th>TAGS</th>
+
                             <th>DESCRIPTION</th>
                             <th>ACTION</th>
                         </tr>
@@ -49,19 +44,21 @@
                                     <img style="width: 60px; height:60px;" src="{{ asset('uploads/work') }}/{{ $data->image }}" alt="">
                                 </td>
                                 <td>{{ $data->title }}</td>
-                                <td>{{ $data->client }}</td>
-                                <td>{{ $data->date }}</td>
-                                <td>{{ $data->url }}</td>
-                                <td>{{ $data->categorie }}</td>
-                                <td>{{ $data->technologie }}</td>
-                                <td>{{ $data->tags }}</td>
+
 
                                 <td > <a href=""   wire:click="readMore({{ $data->id }})" data-bs-toggle="modal" data-bs-target="#readMoreModal" >{{ str_limit($data->description,   10) }}</a> </td>
                                 <td>
                                     <div class="btn-group">
                                         <button wire:click="edit({{ $data->id }})" data-bs-toggle="modal" data-bs-target="#updateModal" class="btn btn-info btn-sm">Edit</button>
-                                    <button wire:click="delete({{ $data->id }})" class="btn btn-danger btn-sm">Delete</button>
-                                    <button wire:click="status({{ $data->id }})" class="btn btn-{{ $data->status==1 ? 'success':'outline-success' }} btn-sm">Active</button>
+                                        <button wire:click="delete({{ $data->id }})" class="btn btn-danger btn-sm">Delete</button>
+                                        <button wire:click="status({{ $data->id }})" class="btn btn-{{ $data->status==1 ? 'success':'outline-success' }} btn-sm">Active</button>
+                                        <button class="btn btn-light btn-sm"
+                                        id="images"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#addImage"
+                                        data-id="{{ $data->id }}">
+                                    Images
+                                </button>
                                     </div>
                                 </td>
                             </tr>

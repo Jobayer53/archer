@@ -395,26 +395,6 @@
                 <!-- Timeline-->
                 <div class="row animation2 " style="margin-top:120px">
                     <div class="col-lg-6 box left">
-                        <!--Timeline-->
-                        <h5 class="mb-30">My Expericence</h5>
-                        <div class="timeline  ">
-
-                            <!--item 1-->
-                           @foreach ($experiences as $experience )
-                           <div class="item">
-                            <div class="content">
-                                <h6 class="mb-0">{{ $experience->title }}
-                                    <span class="text-muted">  </span></h6>
-                                <small class="text-muted">{{ $experience->year }}</small>
-                                <p class="pt-15 mb-0">{{ $experience->description }}</p>
-                            </div>
-                        </div>
-                           @endforeach
-                            <!--item 1-->
-
-                        </div>
-                    </div>
-                    <div class="col-lg-6  box right">
                         <h5 class="mb-30">My Education</h5>
                         <div class="timeline ">
 
@@ -434,6 +414,27 @@
 
 
                         </div>
+                    </div>
+                    <div class="col-lg-6  box right">
+                         <!--Timeline-->
+                         <h5 class="mb-30">My Expericence</h5>
+                         <div class="timeline  ">
+
+                             <!--item 1-->
+                            @foreach ($experiences as $experience )
+                            <div class="item">
+                             <div class="content">
+                                 <h6 class="mb-0">{{ $experience->title }}
+                                     <span class="text-muted">  </span></h6>
+                                 <small class="text-muted">{{ $experience->year }}</small>
+                                 <p class="pt-15 mb-0">{{ $experience->description }}</p>
+                             </div>
+                         </div>
+                            @endforeach
+                             <!--item 1-->
+
+                         </div>
+
                     </div>
                 </div>
             </div>
@@ -492,16 +493,20 @@
                         <div class="col-lg-4 col-md-6 animation3">
                             <!--item -->
                             <div class="item">
-                                <div class="image">
-                                    <img src="{{ asset('uploads/work')}}/{{ $data->image }}" alt="">
-                                    <div class="overly">
-                                        <a href="{{ asset('uploads/work')}}/{{ $data->image }}" class="view-work"> View Work</a>
+                            {{-- <a href="{{ route('work.detail', $data->id) }}"> --}}
+                                    <div class="image">
+                                        <img src="{{ asset('uploads/work')}}/{{ $data->image }}" alt="">
+                                        {{-- <div class="overly"> --}}
+                                            {{--  <a href="{{ asset('uploads/work')}}/{{ $data->image }}" class="view-work"> View Work</a> --}}
+                                        {{-- </div> --}}
                                     </div>
-                                </div>
+                                {{-- </a> --}}
 
                                 <div class="details d-flex align-items-center">
-                                    <p class="mb-0">{{ $data->title }}</p>
-                                    <a href="{{ route('work.detail', $data->id) }}" class="ml-auto"><i class="fas fa-external-link-alt"></i> </a>
+                                    <a href="{{ route('work.detail', $data->id) }}" class="work-title">
+                                        <p class="mb-0">{{ $data->title }}</p>
+
+                                    </a>
                                 </div>
                             </div>
                         </div>

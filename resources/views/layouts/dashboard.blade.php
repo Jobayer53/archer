@@ -103,8 +103,8 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="{{ route('about.image') }}" class="dropdown-item">About Image</a>
                             <a href="{{ route('about.content') }}" class="dropdown-item">About Content</a>
-                            <a href="{{ route('experience') }}" class="dropdown-item">Experience</a>
                             <a href="{{ route('education') }}" class="dropdown-item">Education</a>
+                            <a href="{{ route('experience') }}" class="dropdown-item">Experience</a>
 
                         </div>
                     </div>
@@ -291,9 +291,12 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-    @yield("script")
+
 
     @livewireScripts
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    @yield("script")
+    
 
 </body>
 

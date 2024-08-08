@@ -5,20 +5,21 @@
     <!-- Meta -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Title -->
-    <title> Personal Portfolio</title>
+    <title> Project Details</title>
 
-    <!-- CSS Plugins -->
+    {{-- <!-- CSS Plugins --> --}}
     <link rel="stylesheet" href="{{ asset('frontend_asset/assets/css/all.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend_asset/assets/css/elegant-font-icons.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('frontend_asset/assets/css/elegant-font-icons.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('frontend_asset/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend_asset/assets/css/jquery.animatedheadline.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend_asset/assets/css/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend_asset/assets/css/owl.carousel.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('frontend_asset/assets/css/jquery.animatedheadline.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('frontend_asset/assets/css/magnific-popup.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('frontend_asset/assets/css/owl.carousel.css') }}"> --}}
 
-
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('uploads/favicon-16x16.png') }}">
 
     <!-- Font Google -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
@@ -30,14 +31,14 @@
 </head>
 
 <body class="dark" data-spy="scroll" data-target="#scrollspy" data-offset="1">
-
+{{--
     <!--menu toggle-->
     <div class="menu-toggle" id="menuToggle">
         <span></span>
-    </div>
+    </div> --}}
 
     <!--header-left-->
-    <div class="header-left" id="scrollspy">
+    {{-- <div class="header-left" id="scrollspy">
         <!--logo-->
         <div class="logo bg-base-color">
             <a href="{{ route('index') }}" class="text-white mb-0">M</a>
@@ -82,7 +83,7 @@
             <span class="social_share text-dark"></span>
         </div>
 
-    </div>
+    </div> --}}
 
 
 
@@ -91,15 +92,52 @@
         <!-- Works -->
         <section id="works" class="section work-single">
             <div class="container-fluid">
-                <div class="row mb-50">
-                    <div class="col-md-12">
-                        <div class="section-title">
-                            <h2 class="mb-0">{{ $works->title }}</h2>
-                            <p class="text-muted mb-0">Description & images of project .</p>
-                        </div>
+                <div class="row">
+                    <div class="col-lg-2">
+                      <a class="text-white name" href="{{ route('index') }}"> <h4 class="">Home</h4></a>
+                    </div>
+                    <div class="col-lg-2    ">
+                      <p class="name mt-2 text-white">{{ $about->phone }}
+                        <span class="float-right slash text-secondary">/</span>
+                      </p>
+                    </div>
+
+
+                    <div class="col-lg-2    ">
+                      <p class="name mt-2 text-white">{{ $about->email }}</p>
                     </div>
                 </div>
-                <!--works-items -->
+                <div class="row mb-50 single-title">
+                    <div class="col-lg-6">
+                        <div class="">
+                            <h1 class="mb-0 title-text">{{ $works->title }}</h1>
+                            {{-- <p class="text-muted mb-0">Description & images of project .</p> --}}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-6 item ">
+                                <h5>Client</h5>
+                                <p class="text-muted">{{ $works->client }}</p>
+                            </div>
+                            <div class="col-lg-6  item ">
+                                <h5>URL</h5>
+                                <p class="text-muted">{{ $works->url }}</p>
+                            </div>
+                            <div class="col-lg-6 mt-5rem  item">
+                                <h5>Date</h5>
+                                <p class="text-muted">{{ $works->date }}</p>
+                            </div>
+
+                            <div class="col-lg-6 mt-5rem item">
+                                <h5>Categorie</h5>
+                                <p class="text-muted">{{ $works->categorie }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                {{-- <!--works-items -->
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="image">
@@ -138,12 +176,15 @@
                         </div>
                     </div>
 
-                </div>
+                </div> --}}
             </div>
         </section>
-
-
-
+        <img  class=" work-image " src="{{ asset('uploads/work') }}/{{ $works->image }}" alt="">
+        <div class="container-fluid">
+            <div class="container mb-90 pt-30">
+                <p class=" text-center mb-0">{{ $works->description  }}</p>
+            </div>
+        </div>
         <!--Footer-->
         <footer class="pt-30 pb-30 bg-light">
             <div class="container-fluid">

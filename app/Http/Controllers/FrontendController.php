@@ -68,7 +68,8 @@ class FrontendController extends Controller
     //work detail page
     function work_detail($id){
         $works = Work::where('id', $id)->get()->first();
-        return view('frontend.work_single', ['works'=>$works]);
+        $about = About::first();
+        return view('frontend.work_single', ['works'=>$works, 'about' => $about]);
     }
 
 
