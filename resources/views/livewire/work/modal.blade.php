@@ -220,17 +220,39 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content bg-secondary">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="readMoreModal">Add Images </h1>
+          <h1 class="modal-title fs-5" id="">Project Images </h1>
           <button type="button" wire:click="closeModal" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+            @if ($project_images)
 
+                    @foreach ($project_images as $key=> $image)
+
+                    <div style="position: relative; display: inline-block; margin-bottom:1rem;">
+                        <img style="width: 100px; height: 100px;" src="{{ asset('uploads/project-image/' . $image->image) }}" alt="">
+                        <a class="btn btn-danger btn-sm" href="#" wire:click.prevent="deleteImage({{ $image->id }})" style="
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            z-index: 10;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: rgba(255, 0, 0, 0.7); /* Optional: makes the button background semi-transparent */
+                        ">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </div>
+
+                    @endforeach
+
+            @endif
 
             <form  wire:submit.prevent="storeImage">
                 <div class="mb-3">
-                    <label for="" class="form-label">Image</label>
+                    <label for="" class="form-label">Add Image</label>
                     <input type="file" class="form-control"   wire:model="images" multiple accept="image/*">
-                    <input type="hidden" id="#work_id" wire:model="workId">
 
                     @if (session()->has('message'))
                         <span class="text-danger">{{ session('message') }}</span>

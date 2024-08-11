@@ -17,10 +17,13 @@ class Work extends Component
 
     public $title, $client, $date, $url, $categorie, $technologie, $tag, $description,$image, $editTitle, $editClient, $editDate, $editUrl, $editCategorie, $editTechnologie, $editTag, $editDescription, $editImage, $work_id, $oldImage,$readMoreDesp ;
     public $images=[];
+    public $project_images;
+    public $project_id;
 
-    public $workId;
-
-
+    public function render()
+    {   $works = ModelsWork::all();
+        return view('livewire.work.work', ["works" => $works]);
+    }
 //insert
 public function store(){
     $this->validate([
@@ -168,19 +171,15 @@ public function delete($id){
     ModelsWork::find($id)->delete();
 }
 
-public function closeModal(){
-    $this->reset();
-    $this->resetValidation();
-}
+
 
 public function readMore($id){
     $work = ModelsWork::find($id);
     $this->readMoreDesp = $work->description;
 }
-
+//project image store
 public function storeImage()
 {
-
 
     if (empty($this->images)) {
         session()->flash('message', 'No images selected.');
@@ -194,17 +193,21 @@ public function storeImage()
 
         $project_image = new ProjectImage();
         $project_image->image = $file_name;
-        $project_image->project_id = $this->workId;
+        $project_image->project_id = $this->project_id; // Use the selected project_id
         $project_image->save();
-
-        $this->reset();
-        $this->dispatch('close-modal');
     }
+    $this->reset();
+    $this->reset(['images', 'project_id']); // Reset only specific properties
+    $this->dispatch('close-modal');
 }
-
-public function render()
-{   $works = ModelsWork::all();
-    return view('livewire.work.work', ["works" => $works]);
+public function setProjectId($id)
+{
+    $this->project_id = $id;
+    $this->project_images = ProjectImage::where('project_id', $this->project_id)->get();
+}
+public function closeModal(){
+    $this->reset();
+    $this->resetValidation();
 }
 
 }
