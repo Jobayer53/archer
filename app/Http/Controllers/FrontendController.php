@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Client;
-use App\Models\Contact;
-use App\Models\Education;
+use App\Models\Work;
 use App\Models\About;
 use App\Models\Banner;
-use App\Models\Experience;
+use App\Models\Client;
+use App\Models\Contact;
 use App\Models\Service;
-use App\Models\Work;
+use App\Models\Education;
+use App\Models\Experience;
+use App\Notifications\Contact as NotificationsContact;
+use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Barryvdh\DomPDF\PDF as DomPDFPDF;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 
 
@@ -105,6 +107,8 @@ class FrontendController extends Controller
         $contact->subject = $request->subject?? 'N/A';
         $contact->message = $request->message;
         $contact->save();
+        $name = $request->name;
+        Notification::route('mail', 'unknown327523@gmail.com')->notify(new NotificationsContact($name));
         return back() // Redirect to the named route
         ->with('success', 'Thanks for contacting me! I will reply as soon as possible.');
        // Add a custom flag to indicate scrolling
