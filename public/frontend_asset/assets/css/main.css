@@ -1991,7 +1991,7 @@ ul {
 }
 #main_contact_form{
     background-color: transparent !important;
-    margin-top: -20vh;
+    /* margin-top: -20vh; */
 }
 .contact-title:after {
     position: absolute;
@@ -2008,13 +2008,19 @@ ul {
 }
 .form-control-custom{
     background-color: #333 !important;
-    border: none !important;
+    border: none;
     border-radius: 0!important;
     color: #fff !important;
-
-    padding: 1.5rem 1rem !important;
+    width: 100% !important;
+    padding: .8rem 1rem !important;
     box-shadow: 0 0 25px rgba(0, 0, 0, .5);
     -webkit-appearance: none;
+    transition: 0.5s;
+}
+.form-control-custom:focus{
+ box-shadow: none;
+ transition: 0.4s;
+ border-bottom:1px solid #008080 ;
 }
 
 .work-title:hover{
@@ -2041,7 +2047,43 @@ ul {
 .slash{
     margin-right: 23px;
 }
-.work-image{
-    display: block;
-    max-width: 100%;
+.work-image {
+    opacity: 0;
+    transform: translateY(150px); /* Start the image 100px below its original position */
+    transition: all 0.5s ease-out; /* Adjust the timing of the animation */
+}
+
+.work-image.show {
+    opacity: 1;
+    transform: translateY(0); /* Move the image to its original position */
+}
+.left-to-right {
+    opacity: 0;
+    transform: translateX(-150px); /* Start the image 100px below its original position */
+    transition: all 0.5s ease-out; /* Adjust the timing of the animation */
+}
+
+.left-to-right.show {
+    opacity: 1;
+    transform: translateX(0); /* Move the image to its original position */
+}
+.right-to-left{
+    opacity: 0;
+    transform: translateX(150px); /* Start the image 100px below its original position */
+    transition: all 0.5s ease-out; /* Adjust the timing of the animation */
+}
+
+.right-to-left.show {
+    opacity: 1;
+    transform: translateX(0); /* Move the image to its original position */
+}
+.title-custom{
+    color: #11a6a6;
+}
+.contact-details{
+    position: relative;
+    top: 40%;
+}
+.border-red{
+    border-bottom : 1px solid red!important;
 }

@@ -145,6 +145,7 @@
 </head>
 
 <body class="dark" data-spy="scroll" data-target="#scrollspy" data-offset="1">
+
     <div class="loading">
         <div class="loader-text">
             <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span>
@@ -685,7 +686,7 @@
         <section class="section contact " id="contact">
             <div class="container-fluid">
                 <div class="row mb-50">
-                    <div class="col-md-6 mt-30">
+                    <div class="col-md-6 ">
                         <div class="section-title contact-title">
                             <h2 class="mb-0">Contact Me</h2>
                             <p class="text-muted mb-0">Feel Free To Contact Me Any Time </p>
@@ -693,12 +694,19 @@
                     </div>
                 </div>
                 <div class="row animation4">
-                    <div class="col-lg-6 left contact-left">
+                    <div class="col-lg-6 text-center left contact-left">
+                        <div class="contact-details">
+
+                            <h3 class=" text-muted"><span class="title-custom">Cumilla</span>,Bangladesh</h3>
+
+                            <p class="mb-0 mt-20"><i class="mr-3 fas fa-phone title-custom"></i>+880 1740 737 837</p>
+                            <p class="mb-0 mt-20"><i class="mr-3 fas fa-envelope title-custom"></i>mdjobayer.h53@gmail.com</p>
+                        </div>
                         {{-- <h5 >Let's talk about everything!</h5>
                         <p class=" mb-30">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore. Lorem
                             ipsum dolor sit amet, consectetuer adipiscing elit.
                              Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> --}}
-                        <div class="contact-info">
+                        {{-- <div class="contact-info">
                             <div class="item mb-20">
                                 <p class="font-w-700 mb-0">Phone: </P>
                                 <p class="mb-0"><i class="fas fa-phone base-color"></i>+880 1740 737 837</p>
@@ -715,31 +723,43 @@
                                 <p class="font-w-700 mb-0">Skype: </p>
                                 <p class="mb-0"> <i class="fab fab fa-skype base-color"> </i></p>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <!--Contact -info -->
                     <div class="col-lg-6 right">
-                        <form action="https://mariama.netlify.app/html/assets/php/mail.php" method="post" id="main_contact_form" class="form contact_form ">
-                            <div class="alert alert-success contact_msg " style="display: none" role="alert">
-                                Your message was sent successfully.
+                        @if (session('success'))
+                            <div class=" success-text alert alert-success">
+                                {{ session('success') }}
                             </div>
+                        @endif
+
+                        <form action="{{ route('contact') }}" method="POST" id="main_contact_form" class="form contact_form ">
+                            @csrf
+
                             <div class="form-group">
-                                <input type="text" name="name" id="name" class="form-control form-control-custom" placeholder="Name" required="required">
+                                <input type="text" name="name" id="name" class=" form-control-custom   @if ($errors->has('name'))
+                                    border-red
+                            @endif " placeholder="Name" >
+
                             </div>
 
                             <div class="form-group">
-                                <input type="email" name="email" id="email" class="form-control form-control-custom" placeholder="Email" required="required">
+                                <input type="email" name="email" id="email" class=" form-control-custom  @if ($errors->has('email'))
+                                    border-red
+                            @endif " placeholder="Email" >
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="subject" id="subject" class="form-control form-control-custom" placeholder="Subject" required="required">
+                                <input type="text" name="subject" id="subject" class=" form-control-custom" placeholder="Subject" >
                             </div>
 
                             <div class="form-group">
-                                <textarea name="message" id="message" cols="30" rows="5" class="form-control form-control-custom" placeholder="Message" required="required"></textarea>
+                                <textarea name="message" id="message" cols="30" rows="5" class=" form-control-custom  @if ($errors->has('message'))
+                                    border-red
+                            @endif " placeholder="Message" ></textarea>
                             </div>
 
-                            <button  type="submit" name="submit" class="btn-custom">
+                            <button id="submit"  type="submit" name="submit" class="btn-custom">
                                 <span><i class="fas fa-paper-plane"></i></span>
                                 <span> Send Message</span>
                             </button>
@@ -789,8 +809,28 @@
     <script src="{{ asset('frontend_asset/assets/js/jquery.animatedheadline.min.js') }}"></script>
     <script src="{{ asset('frontend_asset/assets/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('frontend_asset/assets/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('frontend_asset/assets/js/ajax-contact.js') }}"></script>
+    {{-- <script src="{{ asset('frontend_asset/assets/js/ajax-contact.js') }}"></script> --}}
     <script src="{{ asset('frontend_asset/assets/js/main.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            let success = $('.success-text').text();
+          if(success !== ''){
+            window.scrollTo(0,document.body.scrollHeight);
+          }
+
+
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            // Pass Laravel validation error existence to JavaScript
+            var hasErrors = @json($errors->any());
+
+            if (hasErrors) {
+                window.scrollTo(0,document.body.scrollHeight);
+            }
+        });
+
+    </script>
     <script>
     document.addEventListener('scroll', function() {
         const container = document.querySelector('.animation');
@@ -806,7 +846,7 @@
     document.addEventListener('scroll', function() {
         const container = document.querySelector('.animation2');
         const containerPosition = container.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.5;
+        const screenPosition = window.innerHeight ;
 
         if (containerPosition < screenPosition) {
             container.classList.add('visible');
@@ -816,7 +856,7 @@
     });
     document.addEventListener('scroll', function() {
     const items = document.querySelectorAll('.animation3');
-    const screenPosition = window.innerHeight / 1.5;
+    const screenPosition = window.innerHeight ;
 
     items.forEach(item => {
         const itemPosition = item.getBoundingClientRect().top;
@@ -831,7 +871,7 @@
     document.addEventListener('scroll', function() {
         const container = document.querySelector('.animation4');
         const containerPosition = container.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 2;
+        const screenPosition = window.innerHeight;
 
         if (containerPosition < screenPosition) {
             container.classList.add('visible');
@@ -843,7 +883,7 @@
     document.addEventListener('scroll', function() {
         const container = document.querySelector('.animation5');
         const containerPosition = container.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.5;
+        const screenPosition = window.innerHeight ;
 
         if (containerPosition < screenPosition) {
             container.classList.add('visible');

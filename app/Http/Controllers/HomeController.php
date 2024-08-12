@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Image;
 use App\Models\User;
+use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Password;
-use App\Http\Controllers\Controller;
-use Image;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 
 
@@ -141,7 +142,12 @@ class HomeController extends Controller
     }
 
 
-
+    public function contact(){
+        $contacts = Contact::paginate(10);
+        return view('backend.contact',[
+            'contacts' => $contacts
+        ]);
+    }
 
 
 

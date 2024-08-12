@@ -179,10 +179,18 @@
                 </div> --}}
             </div>
         </section>
-        <img  class=" work-image " src="{{ asset('uploads/work') }}/{{ $works->image }}" alt="">
+        <img width="100%" class="work-image" src="{{ asset('uploads/work') }}/{{ $works->image }}" alt="">
+
+
+
+
+        {{-- <img width="100%"  class=" work-image " src="{{ asset('uploads/work') }}/{{ $works->image }}" alt=""> --}}
         <div class="container-fluid">
             <div class="container mb-90 pt-30">
                 <p class=" text-center mb-0">{{ $works->description  }}</p>
+                @foreach ($works->project_images as $key =>  $image)
+                   <img class="mt-50 {{  $key % 2 == 0  ? 'left-to-right' :'right-to-left' }} left-to-right" src="{{ asset('uploads/project-image') }}/{{ $image->image }}" alt="">
+                @endforeach
             </div>
         </div>
         <!--Footer-->
@@ -245,5 +253,46 @@
     <script src="{{ asset('frontend_asset/assets/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('frontend_asset/assets/js/ajax-contact.js') }}"></script>
     <script src="{{ asset('frontend_asset/assets/js/main.js') }}"></script>
+    <script>
+        document.addEventListener('scroll', function() {
+    var workImage = document.querySelector('.work-image');
+    var imagePosition = workImage.getBoundingClientRect().top;
+    var screenPosition = window.innerHeight;
+
+    if (imagePosition < screenPosition) {
+        workImage.classList.add('show');
+    }
+});
+document.addEventListener('scroll', function() {
+    var workImages = document.querySelectorAll('.left-to-right');
+
+    workImages.forEach(function(workImage) {
+        var imagePosition = workImage.getBoundingClientRect().top;
+        var screenPosition = window.innerHeight;
+
+        if (imagePosition < screenPosition) {
+            workImage.classList.add('show');
+        } else {
+            workImage.classList.remove('show');
+        }
+    });
+});
+document.addEventListener('scroll', function() {
+    var workImages = document.querySelectorAll('.right-to-left');
+
+    workImages.forEach(function(workImage) {
+        var imagePosition = workImage.getBoundingClientRect().top;
+        var screenPosition = window.innerHeight;
+
+        if (imagePosition < screenPosition) {
+            workImage.classList.add('show');
+        } else {
+            workImage.classList.remove('show');
+        }
+    });
+});
+
+
+    </script>
 </body>
 </html>

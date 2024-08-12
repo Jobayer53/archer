@@ -44,6 +44,7 @@ Route::delete('/users/destroy/{user_id}', [HomeController::class, 'user_destroy'
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 Route::post('/profile/update', [HomeController::class, 'profile_update'])->name('profile.update');
 Route::post('/profileimage/update', [HomeController::class, 'profileimage_update'])->name('profileimage.update');
+Route::get('/contact-list', [HomeController::class, 'contact'])->name('contact_show');
 
 
 //banner
@@ -74,7 +75,8 @@ Route::get('/service', [ServiceController::class, "index"])->name('service');
 //works
 Route::get('/work',[WorkController::class, 'index'])->name('work');
 Route::get('/work/details/{id}',[FrontendController::class, 'work_detail'])->name('work.detail');
-
+//contact
+Route::post('/contact',[FrontendController::class, 'contact'])->name('contact');
 //client
 Route::get('/client',[ClientController::class, 'index'])->name('client');
 

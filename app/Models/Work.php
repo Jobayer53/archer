@@ -20,6 +20,9 @@ class Work extends Model
         'image' ,
         'status' ,
     ];
+    public function project_images(){
+        return $this->hasMany(ProjectImage::class, 'project_id' );
+    }
 }
 
 

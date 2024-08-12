@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Client;
+use App\Models\Contact;
 use App\Models\Education;
 use App\Models\About;
 use App\Models\Banner;
@@ -67,7 +68,7 @@ class FrontendController extends Controller
     }
     //work detail page
     function work_detail($id){
-        $works = Work::where('id', $id)->get()->first();
+        $works = Work::with('project_images')->where('id', $id)->get()->first();
         $about = About::first();
         return view('frontend.work_single', ['works'=>$works, 'about' => $about]);
     }
@@ -91,6 +92,22 @@ class FrontendController extends Controller
 
 
 
+    }
+    public function contact(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'message' => 'required',
+        ]);
+        $contact= new Contact();
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->subject = $request->subject?? 'N/A';
+        $contact->message = $request->message;
+        $contact->save();
+        return back() // Redirect to the named route
+        ->with('success', 'Thanks for contacting me! I will reply as soon as possible.');
+       // Add a custom flag to indicate scrolling
     }
 
 
